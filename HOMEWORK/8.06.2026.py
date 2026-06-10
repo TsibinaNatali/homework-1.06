@@ -1,39 +1,35 @@
 # 1. Подсчитать сумму всех чисел в заданном пользователем
 # диапазоне.
 
-num1 = int(input("Введите 1 число "))
-num2 = int(input("Введите 2 число "))
-s=0
-if num1>num2:
-    num1,num2=num2,num1
-while num1 < num2:
-    s+=num1
-    print(num1)
-    num1+=1
-
-print(f"сумма всех чисел = {s} ")
+# num1 = int(input("Введите 1 число "))
+# num2 = int(input("Введите 2 число "))
+# s=0
+# if num1>num2:
+#     num1,num2=num2,num1
+# while num1 < num2:
+#     s+=num1
+#     print(num1)
+#     num1+=1
+#
+# print(f"сумма всех чисел = {s} ")
 
 
 # 2. Запросить 2 числа и найти только наибольший общий
 # делитель.
-# num_1 = int(input("Введите 1 число"))
-# num_2 = int(input("Введите 2 число"))
-# if num_1>num_2:
-#     num_1,num_2=num_2,num_1
-# n=0
-# while c > 0:
-#     n+=1
-#     c = num_2 % num_1
-#     num_2 = num_1
-#     if c==0:
-#         print(num_1)
-#     else:
-#         num_1 = c
-#         n+=1
-
-
-
-
+num_1 = int(input("Введите 1 число"))
+num_2 = int(input("Введите 2 число"))
+if num_1>num_2:
+    num_1,num_2=num_2,num_1
+n=0
+c=1
+while c > 0:
+    n+=1
+    c = num_2 % num_1
+    num_2 = num_1
+    if c==0:
+        print(num_1)
+    else:
+        num_1 = c
 
 # 3. Запросить у пользователя число и вывести все делители
 # этого числа.
@@ -57,8 +53,6 @@ while n_number > 0:
     sum += 1
 print(f"количество цифр = {sum}")
 
-
-
 # 5. Запросить у пользователя 10 чисел и подсчитать, сколько
 # он ввел положительных, отрицательных и нулей. При этом
 # также посчитать, сколько четных и нечетных. Вывести
@@ -78,7 +72,7 @@ while k<10:
         s_o += 1
     if n == 0:
         s_nul += 1
-    if n // 2 == 0:
+    if n % 2 == 0:
         s_chet += 1
     if n % 2 != 0:
         s_nechet += 1
@@ -88,3 +82,4 @@ print(f"отрицательных = {s_o}")
 print(f"нулей = {s_nul}")
 print(f"четных = {s_chet }")
 print(f"нечетных = {s_nechet}")
+
