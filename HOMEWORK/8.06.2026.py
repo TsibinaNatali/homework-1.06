@@ -16,20 +16,21 @@ print(f"сумма всех чисел = {s} ")
 
 # 2. Запросить 2 числа и найти только наибольший общий
 # делитель.
-# num_1 = int(input("Введите 1 число"))
-# num_2 = int(input("Введите 2 число"))
-# if num_1>num_2:
-#     num_1,num_2=num_2,num_1
-# n=0
-# while c > 0:
-#     n+=1
-#     c = num_2 % num_1
-#     num_2 = num_1
-#     if c==0:
-#         print(num_1)
-#     else:
-#         num_1 = c
-#         n+=1
+num_1 = int(input("Введите 1 число"))
+num_2 = int(input("Введите 2 число"))
+if num_1>num_2:
+    num_1,num_2=num_2,num_1
+n=0
+c=1
+while c > 0:
+    n+=1
+    c = num_2 % num_1
+    num_2 = num_1
+    if c==0:
+        print(num_1)
+    else:
+        num_1 = c
+
 
 
 
