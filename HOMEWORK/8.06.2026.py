@@ -51,14 +51,10 @@ while n != number:
 
 # 4. Определить количество цифр в введенном числе.
 n_number = int(input("Введите число "))
-i=0
 sum = 0
-while i <= 0:
-    n_number= n_number % 10
-    n_number = n_number // 10
-    print(n_number)
+while n_number > 0:
+    n_number= n_number // 10
     sum += 1
-    i -= 1
 print(f"количество цифр = {sum}")
 
 
