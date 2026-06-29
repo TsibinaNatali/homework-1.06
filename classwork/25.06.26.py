@@ -112,5 +112,5 @@ while True:
     if "y" and "Y":
          True
     if "x" and "X":
-        print("пока")
+        print("пока ")
         break
