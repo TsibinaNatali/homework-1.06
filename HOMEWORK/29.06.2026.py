@@ -28,10 +28,10 @@ matrix=[[2,6,7,12,15,35,23],
 
 for i in range(len(matrix)):
         summ_row = 0
-        sr_arif = 1
+        sr_arif = 0
         for j in range(len(matrix[i])):
                 summ_row += matrix[i][j]
-                sr_arif += (matrix[i][j]) / len(matrix)
+                sr_arif += (matrix[i][j]) / len(matrix[i])
                 print(matrix[i][j], end="\t")
         print("|", summ_row,"/", len(matrix[i]), "=",sr_arif)
 print("--------------------------")
@@ -45,6 +45,7 @@ rezultat += summ_column
 print("|", summ_column)
 print()
 # Для каждой строки вывести:
+
 # - сумму всех значений в строке
 for i in range(len(matrix)):
         summ_row = 0
@@ -55,10 +56,10 @@ print()
 # - среднее арифметическое значение в строке
 for i in range(len(matrix)):
         summ_row = 0
-        sr_arif = 1
+        sr_arif = 0
         for j in range(len(matrix[0])):
                 summ_row += matrix[i][j]
-                sr_arif = summ_row / len(matrix)
+                sr_arif = summ_row / len(matrix[0])
         print(f"среднее арифметическое {i} строки = {sr_arif} ")
 print()
 # - максимальное значение
@@ -95,10 +96,10 @@ print()
 # - среднее арифметическое значение в столбца
 for j in range(len(matrix[0])):
         summ_column = 0
-        sr_arif = 1
+        sr_arif = 0
         for i in range(len(matrix)):
                 summ_column += matrix[i][j]
-                sr_arif = summ_column / len(matrix)
+                sr_arif = summ_column / len(matrix[0])
         print(f"среднее арифметическое {j} столбца = {sr_arif} ")
 print()
 # - максимальное значение столбца
