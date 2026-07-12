@@ -30,7 +30,7 @@ def insertion_sort(arr):
                 break
     return massiv
 
-#шейкерная сортировка
+#шейкерная сортировка.
 def shaker_sort(arr):
     for i in range(len(massiv)//2+1):
         swapped = False
