@@ -19,7 +19,7 @@ def bubble_sort(arr):
 # сортировка вставками
 def insertion_sort(arr):
     for i in range(1, len(massiv)):
-        for j in range(1,0,i):
+        for j in range(i,0,1):
             if massiv[j] < massiv[j - 1]:
                 swap(massiv, j, j - 1)
             elif massiv[j] % 2 != 0:
@@ -67,16 +67,42 @@ def selection_sort(arr):
 def sort_by_length(words_arr):
     for i in range(len(words_arr)):
         swapped = False
-        for j in range(len(words_arr)-i-1):
-            if len(words_arr[j])> len(words_arr[j+1]):
-                swap(words_arr,j,j+1)
+        for j in range(len(words_arr) - i - 1):
+            # Сравниваем длину слов!
+            if len(words_arr[j]) > len(words_arr[j+1]):
+                words_arr[j], words_arr[j+1] = words_arr[j+1], words_arr[j]
                 swapped = True
         if not swapped:
             break
     return words_arr
+
 # Рейтинг учеников
 # Дан список учеников с их баллами за экзамен. Отсортируйте список от высшего балла к низшему.
 # Если баллы равны, выведите их по фамилии.
+def sort_students_data(students_data):
+    for i in range(len(students_data)):
+        swapped = False
+        for j in range(0,len(students_data)-i-1):
+            if students_data[j][1] < students_data[j+1][1]:
+                swap(students_data, j, j + 1)
+                swapped = True
+            if not swapped:
+                break
+    return students_data
+def equal_scores(equal_students_data):
+    sort_students_data(equal_students_data)
+    for n in range(len(equal_students_data)):
+        flag = False
+        if n > 0 and equal_students_data[n][1] == equal_students_data[n - 1][1]:
+            flag = True
+        if n < len(equal_students_data)-1  and equal_students_data[n][1] == equal_students_data[n + 1][1]:
+            flag = True
+        if flag:
+            print(f"{equal_students_data[n][0]}\t—\t{equal_students_data[n][1]} баллов")
+
+    return equal_students_data
+
+
 
 
 
@@ -89,16 +115,33 @@ print()
 print(shaker_sort(massiv))
 print()
 print(selection_sort(massiv))
-words_list = [
-    "Кот",
-    "арбуз",
-    "Окно",
-    "банан",
-    "Игла",
-    "собака",
-    "яблоко",
-    "дом",
-    "улитка",
-    "Ель"
+
+
+# Сортировка по длине строк
+# Дан список слов.
+# Отсортируйте его так, чтобы сначала шли самые короткие слова, а при равной длине — в алфавитном порядке.
+print()
+words = ["шалаш", "яблоко", "дом", "потоп", "программирование", "арбуз", "компьютер", "заказ", "код", "ананас"]
+print(sort_by_length(words))
+
+
+# Рейтинг учеников
+# Дан список учеников с их баллами за экзамен. Отсортируйте список от высшего балла к низшему.
+# Если баллы равны, выведите их по фамилии.
+print()
+students = [
+    ["Сергей", 85],
+    ["Анна", 95],
+    ["Максим", 85],
+    ["Иван", 85],
+    ["Алексей", 58]
 ]
-print(sort_by_length(words_list))
+
+students = sort_students_data(students)
+print("------список учеников ------")
+for student in students:
+    print(f"Ученик:\t{student[0]}\t-\t{student[1]}\tбаллов")
+print()
+print("---список учеников с одинаковыми баллами---")
+equal_scores(students)
+
