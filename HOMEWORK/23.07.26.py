@@ -37,42 +37,81 @@ import random
 # 5. (1б) Создать одномерный список размером 8. Заполнить его целыми
 # числами начиная от 0, по возрастанию, с шагом 3 (циклом). Вывести
 # список на экран.
-# list1 = [0,0,0,0,0,0,0,0]
-# for i in range(0,len(list1),3):
-#     list1[i] = random.randint(0,99)
-#     print(list1[i],end=" ")
+# list1 = []
+# size = 8
+# for i in range(size):
+#     num = i * 3
+#     list1.append(i)
+# print(list1,end=" ")
 # print()
 
 # 6. (2б) Создать двумерный массив, заполнить его случайными числами в
 # диапазоне от a до b (a и b могут быть отрицательными значениями,
 # предусмотреть вероятность того, что a больше b). Вывести на экран
 # массив и среднее арифметическое всех элементов массива.
-start = int(input("введите начало диапазона - "))
-stop = int(input("введите конец диапазона - "))
-rows = 5
-cols = 5
-if start > stop:
-    start, stop = stop, start
-mas = []
-for i in range(rows):
-    row = [[random.randint(start,stop)]]
-    for j in range(cols):
-        row.append(mas[i][j])
+# start = int(input("введите начало диапазона - "))
+# stop = int(input("введите конец диапазона - "))
+# if start > stop:
+#     start, stop = stop, start
+# mas= []
+# summa = 0
+# rows = 3
+# cols = 5
+# for i in range(rows):
+#     mas.append([])
+#     for j in range(cols):
+#         num = random.randint(start,stop)
+#         mas[i].append(num)
+#         summa += mas[i][j]
+# print(mas,end="\n")
+# print(f'avg: {summa/(len(mas)*len(mas[0]))}')
 
-        print(mas[i][j],end=" ")
-    print()
 # 7. (2б) В предыдущем списке найти наименьшее и наибольшее значение.
+# min_num = mas[0][0]
+# max_num = mas[0][0]
+# for i in mas:
+#     for j in i:
+#         if min_num >j:
+#             min_num = j
+#         if max_num < j:
+#             max_num = j
+# print(f"min = {min_num} max = {max_num}")
+
 # 8. (2б) Напишите функцию, определяющую наличие переданного ей числа
 # в одномерном списке целых чисел (не использовать готовый метод).
+def list_in_num(list2,num):
+    for i in list2:
+        if num == i:
+            return True
+    return False
 
 # 9. (2б) Напишите функцию, возвращающую все нечетные числа
 # переданного ей списка.
+def all_even_num(list2):
+    result = []
+    for i in list2:
+        if i % 2:
+            result.append(i)
+    return result
 # 10. (2б) Напишите функцию, которая принимает двумерный список и номер
 # столбца. Функция должна возвращать список содержащий элементы в
 # указанном столбце двумерного списка.
+def get_column(list1,column_index):
+    result = []
+    for i in list1:
+        result.append(i[column_index])
+    return result
 # 11. (3б) Напишите функцию, возвращающую все числа, присутствующие в
 # строке. Числом является самостоятельное числовое значение не
 # входящие в состав другого слова.
+def all_num(stroka):
+    result = []
+    ls = stroka.split(" ")
+    for i in ls:
+        if i.isdigit():
+            result.append(i)
+    return result
+
 # 12. (6б) Напишите программу, позволяющую:
 # - создавать студента с именем, номером класса и оценками
 # - выводить всех студентов из определенного класса
@@ -80,3 +119,13 @@ for i in range(rows):
 # - добавлять студенту оценку
 # - выводить всю информацию о студенте
 # - выводить всех студентов в виде (номер студента, имя, класс)
+
+ls = ["g","f","g","f","m","h",1]
+print(list_in_num(ls,2))
+ls1 = [4,7,88,44,7,9,3]
+print(all_even_num(ls1))
+ls3 = [[1,3,6,9,
+        4,5,3,8]]
+print(get_column(ls3,2))
+stri1 = "gfgj 1 jhgh 4 klk/ 7"
+print(all_num(stri1))
