@@ -79,39 +79,52 @@ import random
 
 # 8. (2б) Напишите функцию, определяющую наличие переданного ей числа
 # в одномерном списке целых чисел (не использовать готовый метод).
-def list_in_num(list2,num):
-    for i in list2:
-        if num == i:
-            return True
-    return False
+# def list_in_num(list2,num):
+#     for i in list2:
+#         if num == i:
+#             return True
+#     return False
 
 # 9. (2б) Напишите функцию, возвращающую все нечетные числа
 # переданного ей списка.
-def all_even_num(list2):
-    result = []
-    for i in list2:
-        if i % 2:
-            result.append(i)
-    return result
+# def all_even_num(list2):
+#     result = []
+#     for i in list2:
+#         if i % 2:
+#             result.append(i)
+#     return result
 # 10. (2б) Напишите функцию, которая принимает двумерный список и номер
 # столбца. Функция должна возвращать список содержащий элементы в
 # указанном столбце двумерного списка.
-def get_column(list1,column_index):
-    result = []
-    for i in list1:
-        result.append(i[column_index])
-    return result
+# def get_column(list1,column_index):
+#     result = []
+#     for i in list1:
+#         result.append(i[column_index])
+#     return result
 # 11. (3б) Напишите функцию, возвращающую все числа, присутствующие в
 # строке. Числом является самостоятельное числовое значение не
 # входящие в состав другого слова.
-def all_num(stroka):
-    result = []
-    ls = stroka.split(" ")
-    for i in ls:
-        if i.isdigit():
-            result.append(i)
-    return result
+# def all_num(stroka):
+#     result = []
+#     ls = stroka.split(" ")
+#     for i in ls:
+#         if i.isdigit():
+#             result.append(i)
+#     return result
 
+# 8
+# ls = ["g","f","g","f","m","h",1]
+# print(list_in_num(ls,1))
+# # 9
+# ls1 = [4,7,88,44,7,9,3]
+# print(all_even_num(ls1))
+# # 10
+# ls3 = [[1,3,6,9,
+#         4,5,3,8]]
+# print(get_column(ls3,2))
+# # 11
+# stri1 = "gfgj 1 jhgh 4 klk/ 7"
+# print(all_num(stri1))
 # 12. (6б) Напишите программу, позволяющую:
 # - создавать студента с именем, номером класса и оценками
 # - выводить всех студентов из определенного класса
@@ -120,12 +133,104 @@ def all_num(stroka):
 # - выводить всю информацию о студенте
 # - выводить всех студентов в виде (номер студента, имя, класс)
 
-ls = ["g","f","g","f","m","h",1]
-print(list_in_num(ls,2))
-ls1 = [4,7,88,44,7,9,3]
-print(all_even_num(ls1))
-ls3 = [[1,3,6,9,
-        4,5,3,8]]
-print(get_column(ls3,2))
-stri1 = "gfgj 1 jhgh 4 klk/ 7"
-print(all_num(stri1))
+school = {}
+while True:
+    menu = input('''\tдобавить студента - add
+    просмотр класса - view
+    удалить студента - delete
+    добавить студенту оценку - add_grade
+    информация о студенте - infa
+    информация о всех студентах - infa_students
+    выход - close\n  ''').lower()
+
+    if menu == "add":
+        while True:
+            number_class = int(input("введите номер класса - "))
+            name_student = input("введите имя студента - ").capitalize()
+            surname_student = input("введите фамилию студента - ").capitalize()
+            grade = int(input("введите оценку - "))
+            new_student = {
+                "name": name_student,
+                "surname": surname_student,
+                "grades": [grade]
+            }
+            if number_class not in school:
+                school[number_class] =[]
+            school[number_class].append(new_student)
+            print("студент успешно добавлен ")
+            add1 = input("добавить студента y/x - ").lower()
+            if add1 == "y":
+                continue
+            else:
+                break
+    if menu == "view":
+        number_class = int(input("введите номер класса - "))
+        if number_class not in school:
+            print("такого класса нет в базе")
+        else:
+            print(f"список класса: {number_class}")
+            for student in school[number_class]:
+                print(f"{student['surname']} {student['name']} - {student['grades']}")
+    if menu == "delete":
+        number_class = int(input("введите номер класса - "))
+        if number_class not in school:
+            print("такого класса нет в базе")
+        else:
+            name_student = input("введите имя студента - ").capitalize()
+            surname_student = input("введите фамилию студента - ").capitalize()
+            for student in school[number_class]:
+                if student['name'] == name_student and student['surname'] == surname_student:
+                    school[number_class].remove(student)
+                    print(f"студент: {student['name']} {student['surname']} успешно удален")
+    if menu == "add_grade":
+        while True:
+            number_class = int(input("введите номер класса - "))
+            name_student = input("введите имя студента - ").capitalize()
+            surname_student = input("введите фамилию студента - ").capitalize()
+            grade = int(input("введите оценку - "))
+            if number_class not in school:
+                print("такого класса нет в базе")
+            else:
+                for student in school[number_class]:
+                    if student['name'] == name_student and student['surname'] == surname_student:
+                        student['grades'].append(grade)
+                        print("оценка успкшно добавлена")
+                        break
+            add_grade = input("добавить еще оценку y/x - ").lower()
+            if add_grade == "y":
+                continue
+            else:
+                break
+    if menu == "infa":
+        name_student = input("введите имя студента - ").capitalize()
+        surname_student = input("введите фамилию студента - ").capitalize()
+        flag = False
+        for number_class in school:
+            for student in school[number_class]:
+                if student['name'] == name_student and student['surname'] == surname_student:
+                    print(f"класс {school[number_class]} - {student['name']} {student['surname']} оценки {student['grades']}")
+                    flag = True
+                    break
+            if flag:
+                break
+        if not flag:
+            print("Такого студента нет ни в одном классе")
+    if menu == "infa_students":
+        for number_class in school:
+            print(f"класс {number_class}")
+            for student in school[number_class]:
+                print(f"{student['name']} {student['surname']} оценки: {student['grades']}\n")
+    if menu == "close":
+        print("досвидание")
+        break
+
+
+
+
+
+
+
+
+
+
+
