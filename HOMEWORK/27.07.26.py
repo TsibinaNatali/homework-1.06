@@ -15,3 +15,19 @@ import random
 # Ожидаемый результат:
 # Программа запрашивает ввод пользователя, а затем выводит последовательность чисел в
 # зависимости от выбора.
+def number_sequence(start,end,even=True):
+    numbers = []
+    for i in range(start,end+1):
+        if even and i % 2 == 0:
+            numbers.append(i)
+        elif not even and i % 2 != 0:
+            numbers.append(i)
+    return numbers
+
+start = int(input("введите начало диапазона - "))
+stop = int(input("введите конец диапазона - "))
+even = input("введите чет/нечет - ")
+if even == "чет":
+    print(number_sequence(start,stop))
+else:
+    print(number_sequence(start,stop,even=False))
