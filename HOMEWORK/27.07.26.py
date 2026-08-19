@@ -23,11 +23,20 @@ def number_sequence(start,end,even=True):
         elif not even and i % 2 != 0:
             numbers.append(i)
     return numbers
+try:
+    start = int(input("введите начало диапазона - "))
+    stop = int(input("введите конец диапазона - "))
+except ValueError:
+    print("должно быть число")
+    exit()
+if start > stop:
+    print("Ошибка: начало диапазона не может быть больше его конца.")
+    exit()
 
-start = int(input("введите начало диапазона - "))
-stop = int(input("введите конец диапазона - "))
-even = input("введите чет/нечет - ")
+even = input("введите чет/нечет - ").strip().lower()
 if even == "чет":
     print(number_sequence(start,stop))
-else:
+elif even == "нечет":
     print(number_sequence(start,stop,even=False))
+else:
+    print("ошибка, нужно либо чет, либо нечет.")
